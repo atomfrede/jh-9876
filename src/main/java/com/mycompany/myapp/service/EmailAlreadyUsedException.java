@@ -1,4 +1,4 @@
 package com.mycompany.myapp.service;
 
-public class EmailAlreadyUsedException2 extends RuntimeException {
+public class EmailAlreadyUsedException extends RuntimeException {
 }

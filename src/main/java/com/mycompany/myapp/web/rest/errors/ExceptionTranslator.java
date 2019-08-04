@@ -1,5 +1,6 @@
 package com.mycompany.myapp.web.rest.errors;
 
+import com.mycompany.myapp.service.EmailAlreadyUsedException;
 import io.github.jhipster.web.util.HeaderUtil;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -104,6 +105,18 @@ public class ExceptionTranslator implements ProblemHandling, SecurityAdviceTrait
     @ExceptionHandler
     public ResponseEntity<Problem> handleBadRequestAlertException(BadRequestAlertException ex, NativeWebRequest request) {
         return create(ex, request, HeaderUtil.createFailureAlert(applicationName, true, ex.getEntityName(), ex.getErrorKey(), ex.getMessage()));
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<Problem> handleEmailAreadyUsedException(EmailAlreadyUsedException ex, NativeWebRequest request) {
+        EmailAlreadyUsedWebException problem = new EmailAlreadyUsedWebException();
+        return create(problem, request, HeaderUtil.createFailureAlert(applicationName, true, problem.getEntityName(), problem.getErrorKey(), problem.getMessage()));
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<Problem> handleLoginAreadyUsedException(LoginAlreadyUsedWebException ex, NativeWebRequest request) {
+        LoginAlreadyUsedWebException problem = new LoginAlreadyUsedWebException();
+        return create(problem, request, HeaderUtil.createFailureAlert(applicationName, true, problem.getEntityName(), problem.getErrorKey(), problem.getMessage()));
     }
 
     @ExceptionHandler
