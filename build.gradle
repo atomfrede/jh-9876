@@ -255,6 +255,8 @@ dependencies {
         exclude module: "junit"
         exclude group: "com.vaadin.external.google", module: "android-json"
     }
+    testImplementation 'com.tngtech.archunit:archunit-junit5-api:0.11.0'
+    testRuntime 'com.tngtech.archunit:archunit-junit5-engine:0.11.0'
     testImplementation "org.springframework.security:spring-security-test"
     testImplementation "org.springframework.boot:spring-boot-test"
     testImplementation "org.junit.jupiter:junit-jupiter-engine"
